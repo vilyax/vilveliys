@@ -2,231 +2,289 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>Violetta Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Violetta Portfolio Y2K</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fdfdc9;
-    overflow-x: hidden;
+:root{
+    --pink:#ffb6d5;
+    --purple:#c69fd5;
+    --yellow:#fff6a5;
+    --black:#0f0f10;
+    --glass: rgba(255,255,255,0.55);
 }
 
-/* INTRO (як презентація) */
-.intro {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: #c69fd5;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 999;
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Inter, sans-serif;
+    background: linear-gradient(135deg, #fff6a5, #ffd6e7, #d9c2ff);
+    color:var(--black);
+    overflow-x:hidden;
+}
+
+/* INTRO */
+.intro{
+    position:fixed;
+    inset:0;
+    background: linear-gradient(135deg,var(--purple),var(--pink));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:999;
     animation: fadeOut 1s ease forwards;
-    animation-delay: 2.5s;
+    animation-delay:2.5s;
+    color:white;
+    text-align:center;
 }
 
-.intro h1 {
-    font-size: 80px;
-    margin: 0;
+.intro h1{
+    font-size:80px;
+    letter-spacing:4px;
 }
 
-.intro p {
-    font-size: 20px;
+.intro p{
+    opacity:0.9;
 }
 
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
+@keyframes fadeOut{
+    to{opacity:0;visibility:hidden;}
 }
 
 /* HERO */
-.hero {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
+.hero{
+    height:100vh;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    justify-content:flex-start;
+    padding:60px;
 }
 
-.hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.hero img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(0.85);
 }
 
-.hero-text {
-    position: absolute;
-    bottom: 60px;
-    left: 60px;
-    color: white;
+.hero-text{
+    position:relative;
+    background: var(--glass);
+    padding:20px 30px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
 }
 
-.hero-text h1 {
-    font-size: 100px;
-    margin: 0;
+.hero-text h1{
+    font-size:80px;
+    margin:0;
 }
 
-.hero-text p {
-    font-size: 20px;
+.hero-text p{
+    margin:0;
+    font-size:16px;
 }
 
 /* SECTION */
-.section {
-    padding: 100px 60px;
+.section{
+    padding:100px 60px;
 }
 
-/* ABOUT */
-.about-text {
-    font-size: 22px;
-    line-height: 1.7;
-    max-width: 800px;
+h2{
+    font-family:Playfair Display, serif;
+    font-size:42px;
+}
+
+.about-text{
+    max-width:900px;
+    font-size:18px;
+    line-height:1.8;
+    background: rgba(255,255,255,0.4);
+    padding:25px;
+    border-radius:20px;
+    backdrop-filter:blur(8px);
 }
 
 /* GALLERY */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
 
-.photo {
-    position: relative;
-    overflow: hidden;
+.photo{
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
 }
 
-.photo img {
-    width: 100%;
-    border-radius: 20px;
-    transition: 0.5s;
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:0.5s;
 }
 
-.photo:hover img {
-    transform: scale(1.05);
+.photo:hover img{
+    transform:scale(1.05);
 }
 
-/* подписи типа snap/mood */
-.label {
-    position: absolute;
-    bottom: 10px;
-    left: 15px;
-    background: rgba(255,255,255,0.7);
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 14px;
+.label{
+    position:absolute;
+    bottom:10px;
+    left:10px;
+    background:rgba(255,255,255,0.7);
+    padding:5px 10px;
+    border-radius:12px;
+    font-size:12px;
 }
 
-/* текст поверх фото */
-.overlay-text {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 40px;
-    color: rgba(255,255,255,0.7);
-}
-
-/* SCROLL ANIMATION */
-.fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 0.8s;
-}
-
-.fade-up.active {
-    opacity: 1;
-    transform: translateY(0);
+.overlay-text{
+    position:absolute;
+    top:15px;
+    left:15px;
+    font-size:28px;
+    color:white;
+    opacity:0.6;
 }
 
 /* CERTS */
-.certs a {
-    display: inline-block;
-    margin: 10px;
-    padding: 15px 25px;
-    background: #FFD1D5;
-    border-radius: 15px;
-    text-decoration: none;
-    color: black;
-    transition: 0.3s;
+.certs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
-.certs a:hover {
-    transform: scale(1.05);
+.certs a{
+    background:rgba(255,255,255,0.6);
+    padding:15px 20px;
+    border-radius:15px;
+    text-decoration:none;
+    color:black;
+    transition:0.3s;
 }
 
-/* BIG TYPO */
-.big-text {
-    font-size: 120px;
-    color: rgba(0,0,0,0.05);
-    position: absolute;
+.certs a:hover{
+    transform:scale(1.05);
 }
+
+/* FADE */
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s;
+}
+
+.fade-up.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* NAV HINT */
+.nav{
+    position:fixed;
+    top:20px;
+    right:20px;
+    display:flex;
+    gap:10px;
+}
+
+.nav a{
+    background:rgba(255,255,255,0.5);
+    padding:8px 12px;
+    border-radius:12px;
+    text-decoration:none;
+    color:black;
+    font-size:12px;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
 <div class="intro">
     <h1>VIOLETTA</h1>
     <p>portfolio experience</p>
 </div>
 
-<!-- HERO -->
+<div class="nav">
+    <a href="#about">about</a>
+    <a href="#work">work</a>
+    <a href="#certs">certs</a>
+</div>
+
 <section class="hero">
     <img src="your-photo.jpg">
-
     <div class="hero-text">
         <h1>VIOLETTA</h1>
-        <p>marketing • sales • visual vibe</p>
+        <p>marketing • sales • visual identity</p>
     </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section fade-up">
+<section id="about" class="section fade-up">
     <h2>про мене</h2>
-
     <p class="about-text">
-        Мене звати Віля. (ну добре — Віолетта)<br><br>
-
-        Я студентка маркетингу в «КРОК» та проходжу навчання
-        “The Art of Negotiation and Conflict Resolution (Mediation)”.<br><br>
-
-        Досвід у продажах навчив мене головному —
-        або ти доносиш цінність, або тебе не чують.
-        Я обираю перше.<br><br>
-
-        Працюю з клієнтами, CRM і текстами,
-        які не просто існують — а ведуть до дії.<br><br>
-
-        Люблю прості рішення, які дають результат.<br><br>
-
-        Маркетинг для мене — це спосіб говорити з людьми так,
-        щоб це мало сенс.<br><br>
-
-        І так… я дуже люблю камеру.
-        І вона, здається, відповідає взаємністю.
+        Мене звати Віолетта. Я працюю з маркетингом, продажами та комунікаціями.
+        Для мене маркетинг — це не реклама, а мова впливу і сенсів.
+        Я люблю структуру, але ще більше — результат.
     </p>
 </section>
 
-<!-- MODELING / PHOTOS -->
-<section class="section fade-up">
-
-    <div class="photo">
-        <img src="https://via.placeholder.com/500">
-        <div class="overlay-text">visual mood</div>
-        <div class="label">snap</div>
-    </div>
-
+<section id="work" class="section fade-up">
+    <h2>досвід</h2>
     <div class="gallery">
+
         <div class="photo">
-            <img src="https://via.placeholder.com/300">
-            <div class="label">mood</div>
+            <img src="https://via.placeholder.com/400">
+            <div class="overlay-text">sales</div>
+            <div class="label">CRM • KPI</div>
         </div>
 
         <div class="photo">
-            <img src="https://via.placeholder.com/300">
-            <div class="label">frame</div>
+            <img src="https://via.placeholder.com/400">
+            <div class="overlay-text">marketing</div>
+            <div class="label">strategy</div>
         </div>
 
         <div class="photo">
+            <img src="https://via.placeholder.com/400">
+            <div class="overlay-text">ops</div>
+            <div class="label">coordination</div>
+        </div>
+
+    </div>
+</section>
+
+<section id="certs" class="section fade-up">
+    <h2>сертифікати</h2>
+    <div class="certs">
+        <a href="#">marketing basics</a>
+        <a href="#">sales strategy</a>
+        <a href="#">negotiation</a>
+    </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if(e.isIntersecting){
+            e.target.classList.add('active');
+        }
+    });
+});
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
