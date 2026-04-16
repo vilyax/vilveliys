@@ -1,24 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Violetta Portfolio</title>
 
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+:root {
+    --espresso: #3E2723;
+    --peony: #F4C9D6;
+    --butter: #FFEDAC;
+    --white: #ffffff;
+}
+
+/* base */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0a0a0a;
-    color: white;
+    background: var(--espresso);
+    color: var(--butter);
+    font-family: 'Inter', sans-serif;
 }
 
+/* header */
 header {
     padding: 40px;
-    font-size: 28px;
+    font-size: 26px;
     letter-spacing: 2px;
+    font-weight: 600;
+    color: var(--peony);
 }
 
+/* nav */
 nav {
     position: fixed;
     right: 40px;
@@ -26,25 +39,42 @@ nav {
 }
 
 nav a {
-    color: white;
+    color: var(--butter);
     margin-left: 20px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 1px;
 }
 
-section {
-    padding: 100px 40px;
+nav a:hover {
+    color: var(--peony);
 }
 
+/* hero */
 .hero {
-    font-size: 48px;
-    max-width: 600px;
+    padding: 120px 40px;
+    font-size: 54px;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.1;
 }
 
 .hero span {
-    color: #c2a47e;
+    color: var(--peony);
 }
 
+/* sections */
+section {
+    padding: 80px 40px;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--peony);
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -52,60 +82,25 @@ section {
 }
 
 .card {
-    background: #111;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(244,201,214,0.2);
     padding: 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
 }
 
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--peony);
+}
+
+/* footer */
 .footer {
     padding: 40px;
     font-size: 12px;
     opacity: 0.6;
+    text-align: center;
 }
 </style>
-
 </head>
-<body>
-
-<header>VIOLETTA</header>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#marketing">Marketing</a>
-<a href="#model">Model</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<section id="home">
-<div class="hero">
-Marketing is my <span>language</span>.<br>
-Modeling is my <span>form</span>.
-</div>
-</section>
-
-<section id="marketing">
-<h2>Marketing</h2>
-<div class="grid">
-<div class="card">Case 1 — Coming soon</div>
-<div class="card">Case 2 — Coming soon</div>
-</div>
-</section>
-
-<section id="model">
-<h2>Model</h2>
-<div class="grid">
-<div class="card">Photo 1</div>
-<div class="card">Photo 2</div>
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<p>Instagram: @yourname</p>
-</section>
-
-<div class="footer">
-© 2026 Violetta
-</div>
-
-</body>
-</html>
