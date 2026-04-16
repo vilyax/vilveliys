@@ -1,106 +1,232 @@
+<!DOCTYPE html>
+<html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Violetta Portfolio</title>
 
-<!-- fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
-:root {
-    --espresso: #3E2723;
-    --peony: #F4C9D6;
-    --butter: #FFEDAC;
-    --white: #ffffff;
-}
-
-/* base */
 body {
     margin: 0;
-    background: var(--espresso);
-    color: var(--butter);
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, sans-serif;
+    background: #fdfdc9;
+    overflow-x: hidden;
 }
 
-/* header */
-header {
-    padding: 40px;
-    font-size: 26px;
-    letter-spacing: 2px;
-    font-weight: 600;
-    color: var(--peony);
-}
-
-/* nav */
-nav {
+/* INTRO (як презентація) */
+.intro {
     position: fixed;
-    right: 40px;
-    top: 40px;
+    width: 100%;
+    height: 100vh;
+    background: #c69fd5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999;
+    animation: fadeOut 1s ease forwards;
+    animation-delay: 2.5s;
 }
 
-nav a {
-    color: var(--butter);
-    margin-left: 20px;
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 1px;
+.intro h1 {
+    font-size: 80px;
+    margin: 0;
 }
 
-nav a:hover {
-    color: var(--peony);
+.intro p {
+    font-size: 20px;
 }
 
-/* hero */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* HERO */
 .hero {
-    padding: 120px 40px;
-    font-size: 54px;
-    font-family: 'Playfair Display', serif;
-    line-height: 1.1;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.hero span {
-    color: var(--peony);
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-/* sections */
-section {
-    padding: 80px 40px;
+.hero-text {
+    position: absolute;
+    bottom: 60px;
+    left: 60px;
+    color: white;
 }
 
-h2 {
-    font-family: 'Playfair Display', serif;
-    color: var(--peony);
-    font-size: 28px;
-    margin-bottom: 20px;
+.hero-text h1 {
+    font-size: 100px;
+    margin: 0;
 }
 
-/* grid */
-.grid {
+.hero-text p {
+    font-size: 20px;
+}
+
+/* SECTION */
+.section {
+    padding: 100px 60px;
+}
+
+/* ABOUT */
+.about-text {
+    font-size: 22px;
+    line-height: 1.7;
+    max-width: 800px;
+}
+
+/* GALLERY */
+.gallery {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(244,201,214,0.2);
-    padding: 20px;
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
+.photo {
+    position: relative;
+    overflow: hidden;
+}
+
+.photo img {
+    width: 100%;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.photo:hover img {
+    transform: scale(1.05);
+}
+
+/* подписи типа snap/mood */
+.label {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    background: rgba(255,255,255,0.7);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* текст поверх фото */
+.overlay-text {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 40px;
+    color: rgba(255,255,255,0.7);
+}
+
+/* SCROLL ANIMATION */
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s;
+}
+
+.fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CERTS */
+.certs a {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 25px;
+    background: #FFD1D5;
+    border-radius: 15px;
+    text-decoration: none;
+    color: black;
     transition: 0.3s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--peony);
+.certs a:hover {
+    transform: scale(1.05);
 }
 
-/* footer */
-.footer {
-    padding: 40px;
-    font-size: 12px;
-    opacity: 0.6;
-    text-align: center;
+/* BIG TYPO */
+.big-text {
+    font-size: 120px;
+    color: rgba(0,0,0,0.05);
+    position: absolute;
 }
 </style>
 </head>
+
+<body>
+
+<!-- INTRO -->
+<div class="intro">
+    <h1>VIOLETTA</h1>
+    <p>portfolio experience</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="your-photo.jpg">
+
+    <div class="hero-text">
+        <h1>VIOLETTA</h1>
+        <p>marketing • sales • visual vibe</p>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section fade-up">
+    <h2>про мене</h2>
+
+    <p class="about-text">
+        Мене звати Віля. (ну добре — Віолетта)<br><br>
+
+        Я студентка маркетингу в «КРОК» та проходжу навчання
+        “The Art of Negotiation and Conflict Resolution (Mediation)”.<br><br>
+
+        Досвід у продажах навчив мене головному —
+        або ти доносиш цінність, або тебе не чують.
+        Я обираю перше.<br><br>
+
+        Працюю з клієнтами, CRM і текстами,
+        які не просто існують — а ведуть до дії.<br><br>
+
+        Люблю прості рішення, які дають результат.<br><br>
+
+        Маркетинг для мене — це спосіб говорити з людьми так,
+        щоб це мало сенс.<br><br>
+
+        І так… я дуже люблю камеру.
+        І вона, здається, відповідає взаємністю.
+    </p>
+</section>
+
+<!-- MODELING / PHOTOS -->
+<section class="section fade-up">
+
+    <div class="photo">
+        <img src="https://via.placeholder.com/500">
+        <div class="overlay-text">visual mood</div>
+        <div class="label">snap</div>
+    </div>
+
+    <div class="gallery">
+        <div class="photo">
+            <img src="https://via.placeholder.com/300">
+            <div class="label">mood</div>
+        </div>
+
+        <div class="photo">
+            <img src="https://via.placeholder.com/300">
+            <div class="label">frame</div>
+        </div>
+
+        <div class="photo">
