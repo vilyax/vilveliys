@@ -1,262 +1,265 @@
 <!DOCTYPE html>
 <html lang="uk">
-<head>
-<meta charset="UTF-8">
-<title>Violetta — Portfolio</title>
+	<head><meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Violetta Portfolio</title>
 
-<style>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&amp;display=swap" rel="stylesheet">
 
-/* BASE */
-body {
-    margin:0;
-    font-family:'Inter', sans-serif;
-    background:#FAFFC7;
-    color:#111;
-    overflow-x:hidden;
-    cursor:none;
-}
+		<style>
 
-/* CURSOR */
-.cursor {
-    width:16px;
-    height:16px;
-    background:#a855f7;
-    position:fixed;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    z-index:9999;
-}
+			/* ===== BASE ===== */
+			body {
+				margin:0;
+				font-family:'Inter', sans-serif;
+				background: linear-gradient(135deg,#FFEDAC,#F4C9D6,#E0CCFF);
+				color:#1a1a1a;
+				scroll-behavior:smooth;
+			}
 
-.cursor-trail {
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:rgba(168,85,247,0.2);
-    position:fixed;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    filter:blur(10px);
-    z-index:9998;
-}
+			/* ===== NAV ===== */
+			nav {
+				position:fixed;
+				top:0;
+				width:100%;
+				display:flex;
+				justify-content:space-between;
+				align-items:center;
+				padding:20px 40px;
+				background:rgba(255,255,255,0.35);
+				backdrop-filter:blur(15px);
+				z-index:1000;
+			}
 
-/* NAV */
-nav {
-    position:fixed;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    padding:20px 40px;
-    z-index:1000;
-    backdrop-filter:blur(10px);
-}
+			.nav-buttons {
+				display:flex;
+				gap:10px;
+			}
 
-nav button {
-    background:none;
-    border:none;
-    margin-left:20px;
-    font-size:14px;
-    cursor:pointer;
-    transition:0.3s;
-}
+			/* ===== BUTTONS ===== */
+			.btn {
+				padding:10px 18px;
+				border-radius:12px;
+				border:none;
+				cursor:pointer;
+				font-size:13px;
+				transition:0.3s;
+			}
 
-nav button:hover {
-    color:#a855f7;
-    transform:translateY(-2px);
-}
+			.btn-glass {
+				background: rgba(255,255,255,0.5);
+			}
 
-/* HERO */
-.hero {
-    height:100vh;
-    position:relative;
-    overflow:hidden;
-}
+			.btn-glass:hover {
+				background: rgba(255,255,255,0.9);
+				transform:translateY(-2px);
+			}
 
-.hero img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
+			.btn-primary {
+				background: linear-gradient(135deg,#F4C9D6,#C69FD5);
+				color:white;
+			}
 
-.hero::after {
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-}
+			.btn-outline {
+				border:1px solid #C69FD5;
+				background:transparent;
+				color:#C69FD5;
+			}
 
-/* TITLE */
-.title {
-    position:absolute;
-    bottom:60px;
-    left:60px;
-    font-size:120px;
-    color:white;
-    line-height:0.9;
-}
+			/* ===== HERO ===== */
+			.hero {
+				height:100vh;
+				display:flex;
+				flex-direction:column;
+				align-items:center;
+				justify-content:center;
+				text-align:center;
+				padding-top:80px;
+			}
 
-/* SECTIONS */
-.section {
-    padding:120px 60px;
-}
+			/* ===== PHOTO (clean luxe glow) ===== */
+			.hero-photo {
+				display:flex;
+				justify-content:center;
+				margin-bottom:30px;
+			}
 
-/* GLASS CARD */
-.glass {
-    background:rgba(255,255,255,0.3);
-    backdrop-filter:blur(20px);
-    border-radius:20px;
-    padding:40px;
-    max-width:700px;
-}
+			.photo-glow {
+				position:relative;
+				width:220px;
+				height:280px;
+				border-radius:18px;
+				overflow:hidden;
+				transition:0.6s ease;
+			}
 
-/* GRID */
-.grid {
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:30px;
-}
+			/* image */
+			.photo-glow img {
+				width:100%;
+				height:100%;
+				object-fit:cover;
+				display:block;
+				border-radius:18px;
 
-.item {
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    transform:scale(0.95);
-    opacity:0;
-    transition:0.6s;
-}
+				filter: contrast(1.05) brightness(1.03);
+				transition:0.6s ease;
+			}
 
-.item.show {
-    transform:scale(1);
-    opacity:1;
-}
+			/* glow layer */
+			.glow {
+				position:absolute;
+				inset:0;
+				background:
+					radial-gradient(circle at 30% 20%, rgba(244,201,214,0.55), transparent 60%),
+					radial-gradient(circle at 70% 80%, rgba(198,159,213,0.45), transparent 60%);
+				mix-blend-mode: screen;
+				opacity:0.85;
+				transition:0.6s ease;
+			}
 
-.item img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:0.5s;
-}
+			/* shine effect */
+			.photo-glow::before {
+				content:"";
+				position:absolute;
+				top:0;
+				left:-120%;
+				width:120%;
+				height:100%;
+				background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+				transition:0.9s;
+			}
 
-.item:hover img {
-    transform:scale(1.1);
-    filter:brightness(1.1);
-}
+			/* hover */
+			.photo-glow:hover {
+				transform: translateY(-8px) scale(1.02);
+			}
 
-.label {
-    position:absolute;
-    bottom:15px;
-    left:15px;
-    background:#fff;
-    padding:6px 12px;
-    border-radius:10px;
-    font-size:12px;
-}
+			.photo-glow:hover img {
+				transform: scale(1.04);
+			}
 
-.wide { grid-column:span 3; }
-.tall { grid-row:span 2; }
+			.photo-glow:hover .glow {
+				opacity:1;
+			}
 
-/* PARALLAX */
-.parallax {
-    transform:translateY(0);
-    transition:transform 0.2s linear;
-}
+			.photo-glow:hover::before {
+				left:120%;
+			}
 
-</style>
-</head>
+			/* ===== TEXT ===== */
+			.hero h1 {
+				font-size:70px;
+				margin:0;
+				letter-spacing:2px;
+			}
 
-<body>
+			.hero p {
+				opacity:0.7;
+				margin-top:10px;
+			}
 
-<div class="cursor"></div>
-<div class="cursor-trail"></div>
+			.hero-buttons {
+				margin-top:20px;
+				display:flex;
+				gap:15px;
+			}
 
-<nav>
-<div>VIOLETTA</div>
-<div>
-<button onclick="scrollToSection('about')">about</button>
-<button onclick="scrollToSection('work')">work</button>
-</div>
-</nav>
+			/* ===== SECTIONS ===== */
+			.section {
+				padding:100px 60px;
+			}
 
-<!-- HERO -->
-<section class="hero">
-<img src="https://images.unsplash.com/photo-1520975922284-9e0ce8274e17?q=80&w=2000" class="parallax">
-<div class="title">VIOLETTA</div>
-</section>
+			h2 {
+				font-size:32px;
+				margin-bottom:30px;
+			}
 
-<!-- ABOUT -->
-<section id="about" class="section">
-<div class="glass">
-Я працюю на перетині маркетингу, продажів і контенту.<br><br>
-Створюю комунікацію, яка веде до дії.<br><br>
-Маркетинг — це не шум, а сенс.
-</div>
-</section>
+			/* ===== GRID ===== */
+			.grid {
+				display:grid;
+				grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+				gap:20px;
+			}
 
-<!-- WORK -->
-<section id="work" class="section">
-<div class="grid">
+			.card {
+				padding:20px;
+				border-radius:20px;
+				background:rgba(255,255,255,0.4);
+				backdrop-filter:blur(10px);
+				transition:0.4s;
+			}
 
-<div class="item wide">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1000">
-<div class="label">campaign</div>
-</div>
+			.card:hover {
+				transform:translateY(-8px);
+				box-shadow:0 10px 30px rgba(0,0,0,0.15);
+			}
 
-<div class="item tall">
-<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1000">
-<div class="label">branding</div>
-</div>
+			/* ===== FORM ===== */
+			input, textarea {
+				width:100%;
+				padding:12px;
+				margin-bottom:10px;
+				border-radius:10px;
+				border:none;
+			}
 
-<div class="item">
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000">
-<div class="label">content</div>
-</div>
+			/* ===== FOOTER ===== */
+			footer {
+				text-align:center;
+				padding:40px;
+				opacity:0.6;
+			}
 
-</div>
-</section>
+		</style>
+	</head>
 
-<script>
-
-/* SCROLL NAV */
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
-
-/* CURSOR */
-const cursor = document.querySelector('.cursor');
-const trail = document.querySelector('.cursor-trail');
-
-let mouseX = 0, mouseY = 0;
-let trailX = 0, trailY = 0;
-
-document.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top = mouseY + 'px';
-});
-
-function animateTrail() {
-    trailX += (mouseX - trailX) * 0.1;
-    trailY += (mouseY - trailY) * 0.1;
-
-    trail.style.left = trailX + 'px';
-    trail.style.top = trailY + 'px';
-
-    requestAnimationFrame(animateTrail);
-}
-animateTrail();
-
-/* PARALLAX */
-window.addEventListener('scroll', () => {
-    document.querySelectorAll('.parallax').forEach(el => {
-        let speed = 0.3;
-        el.style.transform = `translateY(${window.scrollY * speed}px)`;
-    });
-});
-
-</script>
-
-</body>
+	<body>
+		<!-- NAV --><nav>
+		<div>VIOLETTA</div>
+		<div class="nav-buttons"><button class="btn btn-glass">About</button> <button class="btn btn-glass">Portfolio</button> <button class="btn btn-glass">Services</button> <button class="btn btn-glass">Contact</button></div>
+		</nav><!-- HERO -->
+		<section class="hero">
+			<div class="hero-photo">
+				<div class="photo-glow"><img src="https://s9399914.sendpul.se/image/747991a0e145ac2bbe69f063a9402e69/files/emailservice/userfiles/eb792d26952ec312a7c0090080a8b29f9399914/photo_2026-04-17_21-01-38.jpg" alt="Violetta">
+					<div class="glow"><br></div>
+				</div>
+			</div>
+			<h1>VIOLETTA</h1>
+			<p>marketing • modeling • creative</p>
+			<div class="hero-buttons"><button class="btn btn-primary">Portfolio</button> <button class="btn btn-outline">Contact</button></div>
+		</section>
+		<!-- ABOUT -->
+		<section class="section">
+			<h2>About</h2>
+			<div class="grid">
+				<div class="card">Маркетинг як мова впливу</div>
+				<div class="card">Model / Creative</div>
+				<div class="card">CRM, стратегія, контент</div>
+			</div>
+		</section>
+		<!-- PORTFOLIO -->
+		<section class="section">
+			<h2>Portfolio</h2>
+			<div class="grid">
+				<div class="card">Model</div>
+				<div class="card">Marketing</div>
+				<div class="card">Brand</div>
+			</div>
+		</section>
+		<!-- SERVICES -->
+		<section class="section">
+			<h2>Services</h2>
+			<div class="grid">
+				<div class="card">Strategy</div>
+				<div class="card">Content</div>
+				<div class="card">Branding</div>
+			</div>
+		</section>
+		<!-- CONTACT -->
+		<section class="section">
+			<h2>Contact</h2>
+			<input placeholder="Name" type="text"> <input placeholder="Email" type="text"> <textarea placeholder="Message"></textarea> <button class="btn btn-primary">Send</button></section>
+		<footer>© 2026 Violetta Portfolio</footer>
+	</body>
 </html>
