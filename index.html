@@ -226,49 +226,35 @@ document.getElementById(id).scrollIntoView({behavior:'smooth'});
 const cursor = document.querySelector('.cursor');
 const trail = document.querySelector('.cursor-trail');
 
-let mouseX=0, mouseY=0;
-let trailX=0, trailY=0;
+let mouseX = 0, mouseY = 0;
+let trailX = 0, trailY = 0;
 
-document.
-  addEventListener('mousemove',e=>{
-mouseX=e.clientX;
-mouseY=e.clientY;
+document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 
-cursor.style.left = mouseX+'px';
-cursor.style.top = mouseY+'px';
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
 });
 
-function animateTrail(){
-trailX += (mouseX - trailX)*0.1;
-trailY += (mouseY - trailY)*0.1;
+function animateTrail() {
+    trailX += (mouseX - trailX) * 0.1;
+    trailY += (mouseY - trailY) * 0.1;
 
-trail.style.left = trailX+'px';
-trail.style.top = trailY+'px';
+    trail.style.left = trailX + 'px';
+    trail.style.top = trailY + 'px';
 
-requestAnimationFrame(animateTrail);
+    requestAnimationFrame(animateTrail);
 }
 animateTrail();
 
 /* PARALLAX */
-window.addEventListener('scroll',()=>{
-document.querySelectorAll('.parallax').forEach(el=>{
-let speed = 0.3;
-el.style.transform = translateY(${window.scrollY * speed}px);
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('.parallax').forEach(el => {
+        let speed = 0.3;
+        el.style.transform = `translateY(${window.scrollY * speed}px)`;
+    });
 });
-});
-
-/* REVEAL */
-const items = document.querySelectorAll('.item');
-
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
-}
-});
-});
-
-items.forEach(i=>observer.observe(i));
 
 </script>
 
